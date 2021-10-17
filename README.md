@@ -6,10 +6,10 @@
 conda activate qe-mini-example
 ```
 
-1. Build the book (*books/*).
+1. Build the book (*books/dsl_python*).
 
 ```bash
-jupyter-book build dsl_python/
+jupyter-book build mini_book/
 ```
 
 1. Call `ghp-import` and point it to HTML files (dsl_python/mini_book) 
