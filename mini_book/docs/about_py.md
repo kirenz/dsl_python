@@ -13,7 +13,7 @@ kernelspec:
 
 # About Python
 
-This introduction to Python is mainly based on the excellent [Python resources](https://python.quantecon.org/intro.html) provided by Thomas J. Sargent and John Stachurski.
+This introduction to Python 3 is mainly based on the excellent [Python resources](https://python.quantecon.org/intro.html) provided by Thomas J. Sargent and John Stachurski.
 
 ## What\'s Python?
 
