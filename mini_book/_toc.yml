@@ -1,7 +1,12 @@
-format: jb-article
-root: docs/index
-sections:
-- file: docs/about_py
-- file: docs/getting_started
-- file: docs/python_by_example
-- file: docs/learn_more
+format: jb-book
+root: index
+parts:
+  - caption: Name of Part 1
+    chapters:
+    - file: docs/about_py
+    - file: docs/getting_started
+      sections:
+      - file: docs/python_by_example
+  - caption: Name of Part 2
+    chapters:
+    - file: docs/learn_more
