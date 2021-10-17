@@ -1,12 +1,19 @@
 format: jb-book
 root: docs/index
 parts:
-  - caption: Name of Part 1
+  - caption: Introduction
     chapters:
-    - file: docs/about_py
+    - file: docs/01-crispdm.ipynb
     - file: docs/getting_started
       sections:
       - file: docs/python_by_example
-  - caption: Name of Part 2
+  - caption: Regression
     chapters:
-    - file: docs/learn_more
+    - file: docs/02-regression.ipynb
+      sections:
+      - file: docs/python_by_example
+  - caption: Classification
+    chapters:
+    - file: docs/03-classification.ipynb
+      sections:
+      - file: docs/04-references.ipynb
