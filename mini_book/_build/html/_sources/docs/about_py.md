@@ -13,10 +13,7 @@ kernelspec:
 
 # About Python
 
-> \"Python has gotten sufficiently weapons grade that we don't descend
-> into R anymore. Sorry, R people. I used to be one of you but we no
-> longer descend into R.\" -- Chris Wiggins
-
+This introduction to Python 3 is mainly based on the excellent [Python resources](https://python.quantecon.org/intro.html) provided by Thomas J. Sargent and John Stachurski.
 
 ## What\'s Python?
 
