@@ -5,8 +5,6 @@ parts:
     chapters:
     - file: docs/01-crispdm.ipynb
     - file: docs/getting_started
-      sections:
-      - file: docs/python_by_example
   - caption: Regression
     chapters:
     - file: docs/02-regression.ipynb
