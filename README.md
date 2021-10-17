@@ -1,41 +1,19 @@
-# quantecon-mini-example
+# Workflow
 
-A short example showing how to write a lecture series using Jupyter Book 2.0.
+1. Activate conda environment
 
-## Creating an Conda Environment
-
-The conda environment is provided as `environment.yml`. This environment is used for all testing by Github Actions and can be setup by:
-
-1. `conda env create -f environment.yml`
-2. `conda activate qe-mini-example`
-
-## Building a Jupyter Book
-
-Run the following command in your terminal:
-
-```bash
-jb build mini_book/
+```bash 
+conda activate qe-mini-example
 ```
 
-If you would like to work with a clean build, you can empty the build folder by running:
+1. Build the book (*books/*).
 
 ```bash
-jb clean mini_book/
+jupyter-book build dsl_python/
 ```
 
-If jupyter execution is cached, this command will not delete the cached folder. 
-
-To remove the build folder (including `cached` executables), you can run:
+1. Call `ghp-import` and point it to HTML files (dsl_python/mini_book) 
 
 ```bash
-jb clean --all mini_book/
+ghp-import -n -p -f _build/html
 ```
-
-## Publishing this Jupyter Book
-
-This repository is published automatically to `gh-pages` upon `push` to the `master` branch.
-
-## Notes
-
-This repository is used as a test case for [jupyter-book](https://github.com/executablebooks/jupyter-book) and 
-a `requirements.txt` file is provided to support this `CI` application.
