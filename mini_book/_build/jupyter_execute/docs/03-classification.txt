@@ -1,21 +1,6 @@
-knitr::opts_chunk$set(warning = FALSE, message = FALSE)
-library(tidyverse)
-library(skimr)
-library(GGally)
-library(ggmap)
-library(tidymodels)
-library(visdat)
-library(corrr)
-library(ggsignif)
-library(gt)
-library(vip)
+#knitr::include_graphics("css/data-pipeline.png")
 
-
-theme_set(theme_classic())
-
-knitr::include_graphics("css/data-pipeline.png")
-
-library(tidyverse)
+#library(tidyverse)
 
 LINK <- "https://raw.githubusercontent.com/kirenz/datasets/master/housing_unclean.csv"
 housing_df <- read_csv(LINK)

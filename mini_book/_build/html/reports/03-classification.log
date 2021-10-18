@@ -17,26 +17,20 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-knitr::opts_chunk$set(warning = FALSE, message = FALSE)
-library(tidyverse)
-library(skimr)
-library(GGally)
-library(ggmap)
-library(tidymodels)
-library(visdat)
-library(corrr)
-library(ggsignif)
-library(gt)
-library(vip)
+#library(tidyverse)
 
-
-theme_set(theme_classic())
+LINK <- "https://raw.githubusercontent.com/kirenz/datasets/master/housing_unclean.csv"
+housing_df <- read_csv(LINK)
 ------------------
 
-[0;36m  File [0;32m"/var/folders/9c/_3s5jt3n60j__flsgl0t72340000gn/T/ipykernel_2915/2014580695.py"[0;36m, line [0;32m1[0m
-[0;31m    knitr::opts_chunk$set(warning = FALSE, message = FALSE)[0m
-[0m          ^[0m
-[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/var/folders/9c/_3s5jt3n60j__flsgl0t72340000gn/T/ipykernel_3690/2352222934.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0;31m#library(tidyverse)[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;34m[0m[0m
+[0;32m----> 3[0;31m [0mLINK[0m [0;34m<[0m[0;34m-[0m [0;34m"https://raw.githubusercontent.com/kirenz/datasets/master/housing_unclean.csv"[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      4[0m [0mhousing_df[0m [0;34m<[0m[0;34m-[0m [0mread_csv[0m[0;34m([0m[0mLINK[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-SyntaxError: invalid syntax (2014580695.py, line 1)
+[0;31mNameError[0m: name 'LINK' is not defined
+NameError: name 'LINK' is not defined
 
