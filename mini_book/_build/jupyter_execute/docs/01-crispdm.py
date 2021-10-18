@@ -8,7 +8,7 @@
 # 
 # In our data science projects, we follow the data science lifecycle process proposed in the "cross industry standard process for data mining (CRISP-DM)" from {cite:t}`Wirth2000`
 # 
-# Popular textbooks on Python programming include {cite:p}`guttag2016introduction` and {cite:p}`hill2016learning`.
+# Popular textbooks on Python programming include {cite:t}`guttag2016introduction` and {cite:t}`hill2016learning`.
 
 # 
 # knitr::include_graphics("css/CRISP-DM.png")
