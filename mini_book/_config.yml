@@ -32,3 +32,8 @@ latex:
   latex_engine                : "xelatex"
   latex_documents:
     targetname: book.tex
+
+# Reference style
+sphinx:
+  config:
+    bibtex_reference_style: author_year

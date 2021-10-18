@@ -14,4 +14,7 @@ parts:
     chapters:
     - file: docs/03-classification.ipynb
       sections:
-      - file: docs/04-references.ipynb
+      - file: docs/04-reference.ipynb
+  - caption: References
+    chapters:
+    - file: docs/04-reference.md
