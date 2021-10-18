@@ -94,7 +94,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01-crispdm.html">
-   (PART) DATA SCIENCE LIFECYCLE {-}
+   Data Science Lifecycle
   </a>
  </li>
  <li class="toctree-l1">
@@ -123,7 +123,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="03-classification.html">
-   (PART) CLASSIFICATION {-}
+   Introduction
   </a>
  </li>
 </ul>
@@ -433,7 +433,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="part-regression">
-<h1>(PART) REGRESSION {-}<a class="headerlink" href="#part-regression" title="Permalink to this headline">¶</a></h1>
+<span id="file-types-notebooks"></span><h1>(PART) REGRESSION {-}<a class="headerlink" href="#part-regression" title="Permalink to this headline">¶</a></h1>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="introduction-intro">
 <h1>Introduction {#intro}<a class="headerlink" href="#introduction-intro" title="Permalink to this headline">¶</a></h1>
@@ -482,7 +482,7 @@
 <p>First of all, let’s import the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 
 <span class="n">LINK</span> <span class="o">&lt;-</span> <span class="s2">&quot;https://raw.githubusercontent.com/kirenz/datasets/master/housing_unclean.csv&quot;</span>
 <span class="n">housing_df</span> <span class="o">&lt;-</span> <span class="n">read_csv</span><span class="p">(</span><span class="n">LINK</span><span class="p">)</span>
@@ -496,7 +496,7 @@
 <p>To get a first impression of the data we take a look at the top 4 rows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
 
 <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">slice_head</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">%&gt;%</span> 
@@ -508,7 +508,7 @@
 <p>Notice the values in the first row of the variables <code class="docutils literal notranslate"><span class="pre">housing_median_age</span></code> and <code class="docutils literal notranslate"><span class="pre">median_house_value</span></code>. We need to remove the strings “years” and “$” with the function <code class="docutils literal notranslate"><span class="pre">str_remove_all</span></code> from the <code class="docutils literal notranslate"><span class="pre">stringr</span></code> package. Since there could be multiple wrong entries of the same type, we apply our corrections to all of the rows of the corresponding variable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>
 
 <span class="n">housing_df</span> <span class="o">&lt;-</span> 
   <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
@@ -531,7 +531,7 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">glimpse</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">glimpse</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -539,7 +539,7 @@
 <p>The package <code class="docutils literal notranslate"><span class="pre">visdat</span></code> helps us to explore the data class structure visually:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">visdat</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">visdat</span><span class="p">)</span>
 
 <span class="n">vis_dat</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span>
 </pre></div>
@@ -550,7 +550,7 @@
 <p>Furthermore, the categorical variable <code class="docutils literal notranslate"><span class="pre">ocean_proximity</span></code> is formatted as character instead of factor. Let’s take a look at the levels of the variable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span> <span class="o">%&gt;%</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">count</span><span class="p">(</span><span class="n">ocean_proximity</span><span class="p">,</span>
         <span class="n">sort</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
 </pre></div>
@@ -561,7 +561,7 @@
 <p>Note that it is usually a good idea to first take care of the numerical variables. Afterwards, we can easily convert all remaining character variables to factors using the function <code class="docutils literal notranslate"><span class="pre">across</span></code> from the dplyr package (which is part of the tidyverse).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert to numeric</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert to numeric</span>
 <span class="n">housing_df</span> <span class="o">&lt;-</span> 
   <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">mutate</span><span class="p">(</span>
@@ -583,7 +583,7 @@
 <p>Now let’s turn our attention to missing data. Missing data can be viewed with the function <code class="docutils literal notranslate"><span class="pre">vis_miss</span></code> from the package <code class="docutils literal notranslate"><span class="pre">visdat</span></code>. We arrange the data by columns with most missingness:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vis_miss</span><span class="p">(</span><span class="n">housing_df</span><span class="p">,</span> <span class="n">sort_miss</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vis_miss</span><span class="p">(</span><span class="n">housing_df</span><span class="p">,</span> <span class="n">sort_miss</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -591,7 +591,7 @@
 <p>Here an alternative method to obtain missing data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">.</span><span class="n">na</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">colSums</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">.</span><span class="n">na</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">colSums</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -609,7 +609,7 @@
 <p>Let’s create these new attributes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">housing_df</span> <span class="o">&lt;-</span> 
   <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">mutate</span><span class="p">(</span><span class="n">rooms_per_household</span> <span class="o">=</span> <span class="n">total_rooms</span><span class="o">/</span><span class="n">households</span><span class="p">,</span>
@@ -625,7 +625,7 @@
 <p>After we took care of our data problems, we can obtain a data summary of all numerical and categorical attributes using a function from the package <code class="docutils literal notranslate"><span class="pre">skimr</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">skim</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -640,7 +640,7 @@
 <p>Another quick way to get an overview of the type of data you are dealing with is to plot a histogram for each numerical attribute. A histogram shows the number of instances (on the vertical axis) that have a given value range (on the horizontal axis). You can either plot this one attribute at a time, or you can use <code class="docutils literal notranslate"><span class="pre">ggscatmat</span></code> from the package <code class="docutils literal notranslate"><span class="pre">GGally</span></code> on the whole dataset (as shown in the following code example), and it will plot a histogram for each numerical attribute as well as  correlation coefficients (Pearson is the default). We just select the most promising variabels for our plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
 
 <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">select</span><span class="p">(</span>
@@ -655,7 +655,7 @@
 <p>Another option is to use <code class="docutils literal notranslate"><span class="pre">ggpairs</span></code>, where we even can integrate our categorical variable <code class="docutils literal notranslate"><span class="pre">ocean_proximity</span></code> in the output:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
 
 <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">select</span><span class="p">(</span>
@@ -682,7 +682,7 @@
 <p>In our data split, we want to ensure that the training and test set is representative of the various categories of median house values in the whole dataset. Take a look at &#64;ref(fig:hist-med-value)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">median_house_value</span><span class="p">))</span> <span class="o">+</span>
   <span class="n">geom_histogram</span><span class="p">(</span><span class="n">bins</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> 
@@ -694,7 +694,7 @@
 <p>To actually split the data, we can use the <code class="docutils literal notranslate"><span class="pre">rsample</span></code> package (included in <code class="docutils literal notranslate"><span class="pre">tidymodels</span></code>) to create an object that contains the information on how to split the data (which we call <code class="docutils literal notranslate"><span class="pre">data_split</span></code>), and then two more <code class="docutils literal notranslate"><span class="pre">rsample</span></code> functions to create data frames for the training and testing sets:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1"># Fix the random numbers by setting the seed </span>
 <span class="c1"># This enables the analysis to be reproducible </span>
 <span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
@@ -721,7 +721,7 @@
 <p>We first make a copy of the training data since we don’t want to alter our data during data exploration.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">data_explore</span> <span class="o">&lt;-</span> <span class="n">train_data</span>
 </pre></div>
 </div>
@@ -734,7 +734,7 @@
 <p>Since our data includes information about <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">latitude</span></code>, we start our data exploration with the creation of a geographical scatterplot of the data to get some first insights:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">latitude</span><span class="p">))</span> <span class="o">+</span>
   <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;cornflowerblue&quot;</span><span class="p">)</span>
@@ -745,7 +745,7 @@
 <p>A better visualization that highlights high-density areas (with parameter <code class="docutils literal notranslate"><span class="pre">alpha</span> <span class="pre">=</span> <span class="pre">0.1</span></code> ):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">latitude</span><span class="p">))</span> <span class="o">+</span>
   <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;cornflowerblue&quot;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span> 
@@ -762,7 +762,7 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">latitude</span><span class="p">))</span> <span class="o">+</span>
   <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="n">population</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">median_house_value</span><span class="p">),</span> 
@@ -775,7 +775,7 @@
 <p>Lastly, we add a map to our data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">ggmap</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">ggmap</span><span class="p">)</span>
 
 <span class="n">qmplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">longitude</span><span class="p">,</span> 
        <span class="n">y</span> <span class="o">=</span> <span class="n">latitude</span><span class="p">,</span> 
@@ -797,7 +797,7 @@
 <p>We can use boxplots to check, if we actually find differences in the median house value for the different levels of the <em>categorical variable</em> <code class="docutils literal notranslate"><span class="pre">ocean_proximity</span></code>. Additionally, we use the package <code class="docutils literal notranslate"><span class="pre">ggsignif</span></code> to calculate the significance of the difference between two of our groups and add the annotation to the plot in a single line.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">ggsignif</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">ggsignif</span><span class="p">)</span>
 
 <span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">ocean_proximity</span><span class="p">,</span> <span class="n">median_house_value</span><span class="p">))</span> <span class="o">+</span>
@@ -818,7 +818,7 @@
 <p>Now let’s analyze our numerical variables: To obtain the correlations of our numerical data, we can use the function <code class="docutils literal notranslate"><span class="pre">vis_cor</span></code> from the <code class="docutils literal notranslate"><span class="pre">visdat</span></code> package. We use Spearman’s correlation coefficient since this measure is more insensitive to outliers than Pearson’s correlation coefficient:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">visdat</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">visdat</span><span class="p">)</span>
 
 <span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">select</span><span class="p">(</span><span class="n">where</span><span class="p">(</span><span class="ow">is</span><span class="o">.</span><span class="n">numeric</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="c1"># only select numerical data</span>
@@ -830,7 +830,7 @@
 <p>Now we take a closer look at the correlation coefficients with the package <code class="docutils literal notranslate"><span class="pre">corrr</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>library(corrr)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>library(corrr)
 
 # calculate all correlations
 cor_res &lt;- 
@@ -857,7 +857,7 @@ cor_res %&gt;%
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">data_explore</span> <span class="o">%&gt;%</span>
   <span class="n">select</span><span class="p">(</span><span class="n">where</span><span class="p">(</span><span class="ow">is</span><span class="o">.</span><span class="n">numeric</span><span class="p">))</span> <span class="o">%&gt;%</span>  
   <span class="n">correlate</span><span class="p">()</span> <span class="o">%&gt;%</span> 
@@ -876,7 +876,7 @@ cor_res %&gt;%
 <p>As a last step in our correlation analysis, we check the statistical significance of Spearman’s rank correlations. In our example, we only obtain significant p-values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 cor.test(data_explore$median_house_value, 
          data_explore$population_per_household, 
          method = &quot;spearman&quot;, 
@@ -907,7 +907,7 @@ cor.test(data_explore$median_house_value,
 <p>Now let’s analyze the choosen variables in more detail. The function <code class="docutils literal notranslate"><span class="pre">ggscatmat</span></code> from the package <code class="docutils literal notranslate"><span class="pre">GGally</span></code> creates a matrix with scatterplots, densities and correlations for numeric columns. In our code we choose an alpha level of 0.2 (for transparency).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">select</span><span class="p">(</span><span class="n">median_house_value</span><span class="p">,</span> <span class="n">ocean_proximity</span><span class="p">,</span> 
          <span class="n">median_income</span><span class="p">,</span> <span class="n">bedrooms_per_room</span><span class="p">,</span> <span class="n">rooms_per_household</span><span class="p">,</span> 
@@ -921,7 +921,7 @@ cor.test(data_explore$median_house_value,
 <p>We can also add a color column for our categorical variable <code class="docutils literal notranslate"><span class="pre">ocean_proximity</span></code> to get even more insights about the :</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">select</span><span class="p">(</span><span class="n">median_house_value</span><span class="p">,</span> <span class="n">ocean_proximity</span><span class="p">,</span> 
          <span class="n">median_income</span><span class="p">,</span> <span class="n">bedrooms_per_room</span><span class="p">,</span> <span class="n">rooms_per_household</span><span class="p">,</span> 
@@ -936,7 +936,7 @@ cor.test(data_explore$median_house_value,
 <p>We can observe that our ocean proximity variable is indeed a good predictor for our different median house values. Another promising attribute to predict the median house value is the median income, so let’s zoom in:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">median_income</span><span class="p">,</span> <span class="n">median_house_value</span><span class="p">))</span> <span class="o">+</span>
   <span class="n">geom_jitter</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;steelblue&quot;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">+</span> 
@@ -976,7 +976,7 @@ cor.test(data_explore$median_house_value,
 <p>Before we create our <code class="docutils literal notranslate"><span class="pre">recipes</span></code>, we first select the variables which we will use in the model. We also remove specific cases with a price in median house value equal to or greater as 500000 dollars. Note that we keep <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">latitude</span></code> to be able to map the data in a later stage but we will not use the variables in our model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">housing_df_new</span> <span class="o">&lt;-</span>
   <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="nb">filter</span><span class="p">(</span><span class="n">median_house_value</span> <span class="o">&lt;</span> <span class="mi">500000</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># only use houses with a value below 500000</span>
@@ -999,7 +999,7 @@ cor.test(data_explore$median_house_value,
 <p>Furthermore, we need to make a new data split since we updated the original data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 
 <span class="n">data_split</span> <span class="o">&lt;-</span> <span class="n">initial_split</span><span class="p">(</span><span class="n">housing_df_new</span><span class="p">,</span> <span class="c1"># updated data</span>
                            <span class="n">prop</span> <span class="o">=</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> 
@@ -1036,7 +1036,7 @@ cor.test(data_explore$median_house_value,
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">housing_rec</span> <span class="o">&lt;-</span>
   <span class="n">recipe</span><span class="p">(</span><span class="n">median_house_value</span> <span class="o">~</span> <span class="o">.</span><span class="p">,</span>
          <span class="n">data</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">)</span> <span class="o">%&gt;%</span>
@@ -1061,7 +1061,7 @@ cor.test(data_explore$median_house_value,
 <p>To view the current set of variables and roles, use the <code class="docutils literal notranslate"><span class="pre">summary()</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">summary</span><span class="p">(</span><span class="n">housing_rec</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1070,7 +1070,7 @@ cor.test(data_explore$median_house_value,
 <p>If we would like to check if all of our preprocessing steps from above actually worked, we can  proceed as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">prepped_data</span> <span class="o">&lt;-</span> 
   <span class="n">housing_rec</span> <span class="o">%&gt;%</span> <span class="c1"># use the recipe object</span>
   <span class="n">prep</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="c1"># perform the recipe on training data</span>
@@ -1082,7 +1082,7 @@ cor.test(data_explore$median_house_value,
 <p>Take a look at the data structure:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">glimpse</span><span class="p">(</span><span class="n">prepped_data</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1091,7 +1091,7 @@ cor.test(data_explore$median_house_value,
 <p>Visualize the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prepped_data</span> <span class="o">%&gt;%</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prepped_data</span> <span class="o">%&gt;%</span> 
   <span class="n">select</span><span class="p">(</span><span class="n">median_house_value</span><span class="p">,</span> 
          <span class="n">median_income</span><span class="p">,</span> 
          <span class="n">rooms_per_household</span><span class="p">,</span> 
@@ -1116,7 +1116,7 @@ cor.test(data_explore$median_house_value,
 <p>We use k-fold crossvalidation to build a set of 5 validation folds with the function <code class="docutils literal notranslate"><span class="pre">vfold_cv</span></code>. We also use stratified sampling:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="n">cv_folds</span> <span class="o">&lt;-</span>
@@ -1146,7 +1146,7 @@ cor.test(data_explore$median_house_value,
 <h3>Lasso regression<a class="headerlink" href="#lasso-regression" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">lasso_spec</span> <span class="o">&lt;-</span> <span class="c1"># your model specification</span>
   <span class="n">linear_reg</span><span class="p">(</span><span class="n">penalty</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">mixture</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%&gt;%</span>  <span class="c1"># model type and some options</span>
   <span class="n">set_engine</span><span class="p">(</span><span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;glmnet&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>  <span class="c1"># model engine</span>
@@ -1168,7 +1168,7 @@ cor.test(data_explore$median_house_value,
 <h3>Natural spline<a class="headerlink" href="#natural-spline" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">spline_spec</span> <span class="o">&lt;-</span> 
   <span class="n">linear_reg</span><span class="p">()</span> <span class="o">%&gt;%</span>  
   <span class="n">set_engine</span><span class="p">(</span><span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;lm&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>  
@@ -1183,7 +1183,7 @@ cor.test(data_explore$median_house_value,
 <h3>Random forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">ranger</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">ranger</span><span class="p">)</span>
 
 <span class="n">rf_spec</span> <span class="o">&lt;-</span> 
   <span class="n">rand_forest</span><span class="p">()</span> <span class="o">%&gt;%</span> 
@@ -1198,7 +1198,7 @@ cor.test(data_explore$median_house_value,
 <h3>Boosted tree (XGBoost)<a class="headerlink" href="#boosted-tree-xgboost" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">xgboost</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">xgboost</span><span class="p">)</span>
 
 <span class="n">xgb_spec</span> <span class="o">&lt;-</span> 
   <span class="n">boost_tree</span><span class="p">()</span> <span class="o">%&gt;%</span> 
@@ -1213,7 +1213,7 @@ cor.test(data_explore$median_house_value,
 <h3>K-nearest neighbor<a class="headerlink" href="#k-nearest-neighbor" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">knn_spec</span> <span class="o">&lt;-</span> 
   <span class="n">nearest_neighbor</span><span class="p">(</span><span class="n">neighbors</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># we can adjust the number of neighbors </span>
   <span class="n">set_engine</span><span class="p">(</span><span class="s2">&quot;kknn&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
@@ -1232,7 +1232,7 @@ cor.test(data_explore$median_house_value,
 <p>Bundle recipe and model with <code class="docutils literal notranslate"><span class="pre">workflows</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">lasso_wflow</span> <span class="o">&lt;-</span> <span class="c1"># new workflow object</span>
  <span class="n">workflow</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="c1"># use workflow function</span>
  <span class="n">add_recipe</span><span class="p">(</span><span class="n">housing_rec</span><span class="p">)</span> <span class="o">%&gt;%</span>   <span class="c1"># use the new recipe</span>
@@ -1247,7 +1247,7 @@ cor.test(data_explore$median_house_value,
 <p>We need to declare the degrees of freedom -with <code class="docutils literal notranslate"><span class="pre">step_ns()</span></code>- for our natural spline. In our example, we just add the new step to our <code class="docutils literal notranslate"><span class="pre">housing_rec</span></code> recipe and create a new recipe which we will only use for ourse natural spline.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">splines</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">splines</span><span class="p">)</span>
 
 <span class="n">housing_rec_spline</span> <span class="o">&lt;-</span> 
   <span class="n">housing_rec</span> <span class="o">%&gt;%</span>  
@@ -1260,7 +1260,7 @@ cor.test(data_explore$median_house_value,
 <p>Now we bundle the recipe and our model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">spline_wflow</span> <span class="o">&lt;-</span> 
  <span class="n">workflow</span><span class="p">()</span> <span class="o">%&gt;%</span> 
  <span class="n">add_recipe</span><span class="p">(</span><span class="n">housing_rec_spline</span><span class="p">)</span> <span class="o">%&gt;%</span>   <span class="c1"># use the spline recipe</span>
@@ -1275,7 +1275,7 @@ cor.test(data_explore$median_house_value,
 <p>Bundle recipe and model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">rf_wflow</span> <span class="o">&lt;-</span>
  <span class="n">workflow</span><span class="p">()</span> <span class="o">%&gt;%</span>
  <span class="n">add_recipe</span><span class="p">(</span><span class="n">housing_rec</span><span class="p">)</span> <span class="o">%&gt;%</span> 
@@ -1290,7 +1290,7 @@ cor.test(data_explore$median_house_value,
 <p>Bundle recipe and model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">xgb_wflow</span> <span class="o">&lt;-</span>
  <span class="n">workflow</span><span class="p">()</span> <span class="o">%&gt;%</span>
  <span class="n">add_recipe</span><span class="p">(</span><span class="n">housing_rec</span><span class="p">)</span> <span class="o">%&gt;%</span> 
@@ -1305,7 +1305,7 @@ cor.test(data_explore$median_house_value,
 <p>Bundle recipe and model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">knn_wflow</span> <span class="o">&lt;-</span>
  <span class="n">workflow</span><span class="p">()</span> <span class="o">%&gt;%</span>
  <span class="n">add_recipe</span><span class="p">(</span><span class="n">housing_rec</span><span class="p">)</span> <span class="o">%&gt;%</span> 
@@ -1325,7 +1325,7 @@ cor.test(data_explore$median_house_value,
 <h3>Lasso regression<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="n">lasso_res</span> <span class="o">&lt;-</span> 
@@ -1340,7 +1340,7 @@ cor.test(data_explore$median_house_value,
 <p>Show average performance over all folds:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">lasso_res</span> <span class="o">%&gt;%</span>  <span class="n">collect_metrics</span><span class="p">(</span><span class="n">summarize</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1349,7 +1349,7 @@ cor.test(data_explore$median_house_value,
 <p>Show performance for every single fold:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">lasso_res</span> <span class="o">%&gt;%</span>  <span class="n">collect_metrics</span><span class="p">(</span><span class="n">summarize</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1358,7 +1358,7 @@ cor.test(data_explore$median_house_value,
 <p>To assess the model predictions, we plot the predictions on the y-axis and the real median house value at the x-axis. Note that the red line is not our model. If our model would have made no mistakes at all, all points would lie on the red diagonal line (where the prediction equals the real value).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">assess_res</span> <span class="o">&lt;-</span> <span class="n">collect_predictions</span><span class="p">(</span><span class="n">lasso_res</span><span class="p">)</span>
 
 <span class="n">assess_res</span> <span class="o">%&gt;%</span> 
@@ -1374,7 +1374,7 @@ cor.test(data_explore$median_house_value,
 <p>Let`s look at the 10 districts where our model produced the greatest residuals:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">wrongest_prediction</span> <span class="o">&lt;-</span> 
   <span class="n">assess_res</span> <span class="o">%&gt;%</span> 
   <span class="n">mutate</span><span class="p">(</span><span class="n">residual</span> <span class="o">=</span> <span class="n">median_house_value</span> <span class="o">-</span> <span class="o">.</span><span class="n">pred</span><span class="p">)</span> <span class="o">%&gt;%</span> 
@@ -1389,7 +1389,7 @@ cor.test(data_explore$median_house_value,
 <p>Show the observations in the training data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 train_data %&gt;% 
   dplyr::slice(wrongest_prediction$.row) 
 </pre></div>
@@ -1403,7 +1403,7 @@ train_data %&gt;%
 <p>We don’t repeat all of the steps shown in lasso regression and just focus on the performance metrics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">spline_res</span> <span class="o">&lt;-</span>
   <span class="n">spline_wflow</span> <span class="o">%&gt;%</span> 
   <span class="n">fit_resamples</span><span class="p">(</span>
@@ -1422,7 +1422,7 @@ train_data %&gt;%
 <p>We don’t repeat all of the steps shown in lasso regression and just focus on the performance metrics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">rf_res</span> <span class="o">&lt;-</span>
   <span class="n">rf_wflow</span> <span class="o">%&gt;%</span> 
   <span class="n">fit_resamples</span><span class="p">(</span>
@@ -1441,7 +1441,7 @@ train_data %&gt;%
 <p>We don’t repeat all of the steps shown in lasso regression and just focus on the performance metrics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">xgb_res</span> <span class="o">&lt;-</span> 
   <span class="n">xgb_wflow</span> <span class="o">%&gt;%</span> 
   <span class="n">fit_resamples</span><span class="p">(</span>
@@ -1460,7 +1460,7 @@ train_data %&gt;%
 <p>We don’t repeat all of the steps shown in lasso regression and just focus on the performance metrics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">knn_res</span> <span class="o">&lt;-</span> 
   <span class="n">knn_wflow</span> <span class="o">%&gt;%</span> 
   <span class="n">fit_resamples</span><span class="p">(</span>
@@ -1479,7 +1479,7 @@ train_data %&gt;%
 <p>Extract the RMSE from our models to compare them:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">lasso_rmse</span> <span class="o">&lt;-</span> 
   <span class="n">lasso_res</span> <span class="o">%&gt;%</span> 
   <span class="n">collect_metrics</span><span class="p">(</span><span class="n">summarise</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span> <span class="o">%&gt;%</span>
@@ -1541,7 +1541,7 @@ train_data %&gt;%
 <p>Note that the model results are quite similar.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># find minimum rmse</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># find minimum rmse</span>
 <span class="n">model_comp</span> <span class="o">%&gt;%</span> 
   <span class="n">slice_min</span><span class="p">(</span><span class="n">mean_rmse</span><span class="p">)</span>
 </pre></div>
@@ -1556,7 +1556,7 @@ train_data %&gt;%
 <p>Tidymodels provides the function <a class="reference external" href="https://tune.tidymodels.org/reference/last_fit.html"><code class="docutils literal notranslate"><span class="pre">last_fit()</span></code></a> which fits a model to the <em>training data</em> and evaluates it on the <em>test set</em>. We just need to provide the workflow object of the best model as well as the <strong>data split</strong> object (not the training data).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">last_fit_xgb</span> <span class="o">&lt;-</span> <span class="n">last_fit</span><span class="p">(</span><span class="n">xgb_wflow</span><span class="p">,</span> <span class="n">split</span> <span class="o">=</span> <span class="n">data_split</span><span class="p">)</span>
 
 <span class="c1"># Show RMSE and RSQ</span>

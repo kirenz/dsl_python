@@ -17,29 +17,43 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-library(tidyverse)
-library(skimr)
-library(GGally)
-library(ggmap)
-library(tidymodels)
-library(visdat)
-library(corrr)
-library(ggsignif)
-library(gt)
+import folium
+m = folium.Map(
+    location=[45.372, -121.6972],
+    zoom_start=12,
+    tiles='Stamen Terrain'
+)
 
-theme_set(theme_classic())
+folium.Marker(
+    location=[45.3288, -121.6625],
+    popup='Mt. Hood Meadows',
+    icon=folium.Icon(icon='cloud')
+).add_to(m)
 
+folium.Marker(
+    location=[45.3311, -121.7113],
+    popup='Timberline Lodge',
+    icon=folium.Icon(color='green')
+).add_to(m)
+
+folium.Marker(
+    location=[45.3300, -121.6823],
+    popup='Some Other Location',
+    icon=folium.Icon(color='red', icon='info-sign')
+).add_to(m)
+
+m
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/var/folders/9c/_3s5jt3n60j__flsgl0t72340000gn/T/ipykernel_2910/639806568.py[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0mlibrary[0m[0;34m([0m[0mtidyverse[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      2[0m [0mlibrary[0m[0;34m([0m[0mskimr[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m [0mlibrary[0m[0;34m([0m[0mGGally[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m [0mlibrary[0m[0;34m([0m[0mggmap[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m [0mlibrary[0m[0;34m([0m[0mtidymodels[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m/var/folders/9c/_3s5jt3n60j__flsgl0t72340000gn/T/ipykernel_2920/2074828163.py[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0;32mimport[0m [0mfolium[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      2[0m m = folium.Map(
+[1;32m      3[0m     [0mlocation[0m[0;34m=[0m[0;34m[[0m[0;36m45.372[0m[0;34m,[0m [0;34m-[0m[0;36m121.6972[0m[0;34m][0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m     [0mzoom_start[0m[0;34m=[0m[0;36m12[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m     [0mtiles[0m[0;34m=[0m[0;34m'Stamen Terrain'[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mNameError[0m: name 'library' is not defined
-NameError: name 'library' is not defined
+[0;31mModuleNotFoundError[0m: No module named 'folium'
+ModuleNotFoundError: No module named 'folium'
 

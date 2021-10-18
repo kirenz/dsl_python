@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>(PART) CLASSIFICATION {-} &#8212; Introduction to Data Science with Python</title>
+    <title>Introduction &#8212; Introduction to Data Science with Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,7 +51,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="References {-}" href="04-references.html" />
+    <link rel="next" title="References" href="04-references.html" />
     <link rel="prev" title="An Introductory Example" href="python_by_example.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -94,7 +94,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="01-crispdm.html">
-   (PART) DATA SCIENCE LIFECYCLE {-}
+   Data Science Lifecycle
   </a>
  </li>
  <li class="toctree-l1">
@@ -123,7 +123,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   (PART) CLASSIFICATION {-}
+   Introduction
   </a>
  </li>
 </ul>
@@ -199,12 +199,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   (PART) CLASSIFICATION {-}
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction-intro2">
-   Introduction {#intro2}
+   Introduction
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -459,11 +454,8 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="part-classification">
-<h1>(PART) CLASSIFICATION {-}<a class="headerlink" href="#part-classification" title="Permalink to this headline">¶</a></h1>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="introduction-intro2">
-<h1>Introduction {#intro2}<a class="headerlink" href="#introduction-intro2" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="introduction">
+<span id="file-types-notebooks"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter, we’ll build the following classification models:</p>
 <ul class="simple">
 <li><p>logistic regression</p></li>
@@ -509,7 +501,7 @@
 <p>First of all, let’s import the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
 
 <span class="n">LINK</span> <span class="o">&lt;-</span> <span class="s2">&quot;https://raw.githubusercontent.com/kirenz/datasets/master/housing_unclean.csv&quot;</span>
 <span class="n">housing_df</span> <span class="o">&lt;-</span> <span class="n">read_csv</span><span class="p">(</span><span class="n">LINK</span><span class="p">)</span>
@@ -523,7 +515,7 @@
 <p>To get a first impression of the data we take a look at the top 4 rows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
 
 <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">slice_head</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">%&gt;%</span> 
@@ -535,7 +527,7 @@
 <p>Notice the values in the first row of the variables <code class="docutils literal notranslate"><span class="pre">housing_median_age</span></code>and <code class="docutils literal notranslate"><span class="pre">median_house_value</span></code>. We need to remove the strings “years” and “$”. Therefore, we use the function <code class="docutils literal notranslate"><span class="pre">str_remove_all</span></code> from the <code class="docutils literal notranslate"><span class="pre">stringr</span></code> package. Since there could be multiple wrong entries of the same type, we apply our corrections to all of the rows of the corresponding variable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>
 
 <span class="n">housing_df</span> <span class="o">&lt;-</span> 
   <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
@@ -558,7 +550,7 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">glimpse</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">glimpse</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -566,7 +558,7 @@
 <p>The package <code class="docutils literal notranslate"><span class="pre">visdat</span></code> helps us to explore the data class structure visually:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">visdat</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">visdat</span><span class="p">)</span>
 
 <span class="n">vis_dat</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span>
 </pre></div>
@@ -577,7 +569,7 @@
 <p>Furthermore, the categorical variable <code class="docutils literal notranslate"><span class="pre">ocean_proximity</span></code> is formatted as character instead of factor. Let’s take a look at the levels of the variable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span> <span class="o">%&gt;%</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">count</span><span class="p">(</span><span class="n">ocean_proximity</span><span class="p">,</span>
         <span class="n">sort</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
 </pre></div>
@@ -588,7 +580,7 @@
 <p>Note that it is usually a good idea to first take care of the numerical variables. Afterwards, we can easily convert all remaining character variables to factors using the function <code class="docutils literal notranslate"><span class="pre">across</span></code> from the dplyr package (which is part of the tidyverse).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert to numeric</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert to numeric</span>
 <span class="n">housing_df</span> <span class="o">&lt;-</span> 
   <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">mutate</span><span class="p">(</span>
@@ -610,7 +602,7 @@
 <p>Now let’s turn our attention to missing data. Missing data can be viewed with the function <code class="docutils literal notranslate"><span class="pre">vis_miss</span></code> from the package <code class="docutils literal notranslate"><span class="pre">visdat</span></code>. We arrange the data by columns with most missingness:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vis_miss</span><span class="p">(</span><span class="n">housing_df</span><span class="p">,</span> <span class="n">sort_miss</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vis_miss</span><span class="p">(</span><span class="n">housing_df</span><span class="p">,</span> <span class="n">sort_miss</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -618,7 +610,7 @@
 <p>Here an alternative method to obtain missing data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">.</span><span class="n">na</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">colSums</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ow">is</span><span class="o">.</span><span class="n">na</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="n">colSums</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -636,7 +628,7 @@
 <p>Let’s create these new attributes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span> <span class="o">&lt;-</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span> <span class="o">&lt;-</span> 
   <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">mutate</span><span class="p">(</span><span class="n">rooms_per_household</span> <span class="o">=</span> <span class="n">total_rooms</span><span class="o">/</span><span class="n">households</span><span class="p">,</span>
         <span class="n">bedrooms_per_room</span> <span class="o">=</span> <span class="n">total_bedrooms</span><span class="o">/</span><span class="n">total_rooms</span><span class="p">,</span>
@@ -648,7 +640,7 @@
 <p>Furthermore, in our example we need to create our dependent variable and drop the original numeric variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span> <span class="o">&lt;-</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span> <span class="o">&lt;-</span> 
   <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">mutate</span><span class="p">(</span><span class="n">price_category</span> <span class="o">=</span> <span class="n">case_when</span><span class="p">(</span> 
     <span class="n">median_house_value</span> <span class="o">&lt;</span> <span class="mi">150000</span> <span class="o">~</span> <span class="s2">&quot;below&quot;</span><span class="p">,</span>
@@ -664,7 +656,7 @@
 <p>Take a look at our dependent variable and  create a table with the package <a class="reference external" href="https://gt.rstudio.com/"><code class="docutils literal notranslate"><span class="pre">gt</span></code></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
 
 <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">count</span><span class="p">(</span><span class="n">price_category</span><span class="p">,</span> <span class="c1"># count observations</span>
@@ -678,7 +670,7 @@
 <p>Let’s make a nice looking table:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span> <span class="o">%&gt;%</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">count</span><span class="p">(</span><span class="n">price_category</span><span class="p">,</span> 
         <span class="n">name</span> <span class="o">=</span><span class="s2">&quot;districts_total&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>
   <span class="n">mutate</span><span class="p">(</span><span class="n">percent</span> <span class="o">=</span> <span class="n">districts_total</span><span class="o">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">districts_total</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span>
@@ -707,7 +699,7 @@
 <p>After we took care of our data issues, we can obtain a data summary of all numerical and categorical attributes using a function from the package <code class="docutils literal notranslate"><span class="pre">skimr</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skim</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">skim</span><span class="p">(</span><span class="n">housing_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -721,7 +713,7 @@
 <p>Another quick way to get an overview of the type of data you are dealing with is to plot a <strong>histogram</strong> for each numerical attribute. A histogram shows the number of instances (on the vertical axis) that have a given value range (on the horizontal axis). You can either plot this one attribute at a time, or you can use <code class="docutils literal notranslate"><span class="pre">ggscatmat</span></code> from the package <code class="docutils literal notranslate"><span class="pre">GGally</span></code> on the whole dataset (as shown in the following code example), and it will plot a histogram for each numerical attribute as well as  correlation coefficients (Pearson is the default). We just select the most promising variabels for our plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
 
 <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">select</span><span class="p">(</span>
@@ -736,7 +728,7 @@
 <p>Another option is to use <code class="docutils literal notranslate"><span class="pre">ggpairs</span></code>, where we even can integrate categorical variables like our dependent variable <code class="docutils literal notranslate"><span class="pre">price_category</span></code> and ocean proximity in the output:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
 
 <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">select</span><span class="p">(</span>
@@ -763,7 +755,7 @@
 <p>In our data split, we want to ensure that the training and test set is representative of the categories of our dependent variable. Take a look at &#64;ref(fig:hist-med-value-class)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">price_category</span><span class="p">))</span> <span class="o">+</span>
   <span class="n">geom_bar</span><span class="p">()</span> 
@@ -775,7 +767,7 @@
 <p>To actually split the data, we can use the <code class="docutils literal notranslate"><span class="pre">rsample</span></code> package (included in <code class="docutils literal notranslate"><span class="pre">tidymodels</span></code>) to create an object that contains the information on how to split the data (which we call <code class="docutils literal notranslate"><span class="pre">data_split</span></code>), and then two more <code class="docutils literal notranslate"><span class="pre">rsample</span></code> functions to create data frames for the training and testing sets:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fix the random numbers by setting the seed </span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fix the random numbers by setting the seed </span>
 <span class="c1"># This enables the analysis to be reproducible </span>
 <span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 
@@ -800,7 +792,7 @@
 <p>We first make a copy of the training data since we don’t want to alter our data during data exploration.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_explore</span> <span class="o">&lt;-</span> <span class="n">train_data</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_explore</span> <span class="o">&lt;-</span> <span class="n">train_data</span>
 </pre></div>
 </div>
 </div>
@@ -812,7 +804,7 @@
 <p>Since our data includes information about <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">latitude</span></code>, we start our data exploration with the creation of a geographical scatterplot of the data to get some first insights:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_explore</span> <span class="o">%&gt;%</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">latitude</span><span class="p">))</span> <span class="o">+</span>
   <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;cornflowerblue&quot;</span><span class="p">)</span>
 </pre></div>
@@ -822,7 +814,7 @@
 <p>A better visualization that highlights high-density areas (with parameter <code class="docutils literal notranslate"><span class="pre">alpha</span> <span class="pre">=</span> <span class="pre">0.1</span></code> ):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_explore</span> <span class="o">%&gt;%</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">latitude</span><span class="p">))</span> <span class="o">+</span>
   <span class="n">geom_point</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;cornflowerblue&quot;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span> 
 </pre></div>
@@ -837,7 +829,7 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_explore</span> <span class="o">%&gt;%</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">longitude</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">latitude</span><span class="p">))</span> <span class="o">+</span>
   <span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="n">population</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">price_category</span><span class="p">),</span> 
              <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.4</span><span class="p">)</span>
@@ -848,7 +840,7 @@
 <p>Lastly, we add a map to our data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">ggmap</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">ggmap</span><span class="p">)</span>
 
 <span class="n">qmplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">longitude</span><span class="p">,</span> 
        <span class="n">y</span> <span class="o">=</span> <span class="n">latitude</span><span class="p">,</span> 
@@ -869,7 +861,7 @@
 <p>We can use boxplots to check, if we actually find differences in our numeric variables for the different levels of our dependent <em>categorical variable</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_explore</span> <span class="o">%&gt;%</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">price_category</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">median_income</span><span class="p">,</span> 
              <span class="n">fill</span> <span class="o">=</span> <span class="n">price_category</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">price_category</span><span class="p">))</span> <span class="o">+</span>
   <span class="n">geom_boxplot</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span> 
@@ -880,7 +872,7 @@
 <p>Let`s define a function for this task that accepts strings as inputs so we don’t have to copy and paste our code for every plot. Note that we only have to change the “y-variable” in every  plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_boxplot</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="o">.</span><span class="n">y_var</span><span class="p">){</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">print_boxplot</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="o">.</span><span class="n">y_var</span><span class="p">){</span>
   
   <span class="c1"># convert strings to variable</span>
   <span class="n">y_var</span> <span class="o">&lt;-</span> <span class="n">sym</span><span class="p">(</span><span class="o">.</span><span class="n">y_var</span><span class="p">)</span> 
@@ -899,7 +891,7 @@
 <p>Obtain all of the names of the y-variables we want to use for our plots:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">y_var</span> <span class="o">&lt;-</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_var</span> <span class="o">&lt;-</span> 
   <span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">select</span><span class="p">(</span><span class="n">where</span><span class="p">(</span><span class="ow">is</span><span class="o">.</span><span class="n">numeric</span><span class="p">),</span> <span class="o">-</span><span class="n">longitude</span><span class="p">,</span> <span class="o">-</span> <span class="n">latitude</span><span class="p">)</span> <span class="o">%&gt;%</span> 
   <span class="n">variable</span><span class="o">.</span><span class="n">names</span><span class="p">()</span> <span class="c1"># obtain name</span>
@@ -910,7 +902,7 @@
 <p>The map function applys the function <code class="docutils literal notranslate"><span class="pre">print_boxplot</span></code> to each element of our atomic vector <code class="docutils literal notranslate"><span class="pre">y_var</span></code> and returns the according plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">purrr</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">purrr</span><span class="p">)</span>
 
 <span class="nb">map</span><span class="p">(</span><span class="n">y_var</span><span class="p">,</span> <span class="n">print_boxplot</span><span class="p">)</span>
 </pre></div>
@@ -926,7 +918,7 @@
 <p>Again, let’s write a short function for this task and filter some of the extreme cases. We call the new function <code class="docutils literal notranslate"><span class="pre">print_boxplot_out</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">print_boxplot_out</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="o">.</span><span class="n">y_var_out</span><span class="p">){</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">print_boxplot_out</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="o">.</span><span class="n">y_var_out</span><span class="p">){</span>
   
   <span class="n">y_var</span> <span class="o">&lt;-</span> <span class="n">sym</span><span class="p">(</span><span class="o">.</span><span class="n">y_var_out</span><span class="p">)</span> 
  
@@ -952,7 +944,7 @@
 <p>Additionally, we can use the function <code class="docutils literal notranslate"><span class="pre">ggscatmat</span></code> to create plots with our dependent variable as color column:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
 
 <span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">select</span><span class="p">(</span><span class="n">price_category</span><span class="p">,</span> <span class="n">median_income</span><span class="p">,</span> <span class="n">bedrooms_per_room</span><span class="p">,</span> <span class="n">rooms_per_household</span><span class="p">,</span> 
@@ -982,7 +974,7 @@
 <p>Now let’s analyze the relationship between our categorical variables <code class="docutils literal notranslate"><span class="pre">ocean</span> <span class="pre">proximity</span></code> and <code class="docutils literal notranslate"><span class="pre">price_category</span></code>. We start with a simple count.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">gt</span><span class="p">)</span>
 
 <span class="n">data_explore</span> <span class="o">%&gt;%</span> 
   <span class="n">count</span><span class="p">(</span><span class="n">price_category</span><span class="p">,</span> <span class="n">ocean_proximity</span><span class="p">)</span> <span class="o">%&gt;%</span> 
@@ -1011,7 +1003,7 @@
 <p>The function <code class="docutils literal notranslate"><span class="pre">geom_bin2d()</span></code> creats a heatmap by counting the number of cases in each group, and then mapping the number of cases to each subgroub’s fill.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_explore</span> <span class="o">%&gt;%</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_explore</span> <span class="o">%&gt;%</span>
   <span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">price_category</span><span class="p">,</span> <span class="n">ocean_proximity</span><span class="p">))</span> <span class="o">+</span>
   <span class="n">geom_bin2d</span><span class="p">()</span> <span class="o">+</span>
   <span class="n">scale_fill_continuous</span><span class="p">(</span><span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;viridis&quot;</span><span class="p">)</span> 
@@ -1048,7 +1040,7 @@
 <p>Before we create our <code class="docutils literal notranslate"><span class="pre">recipes</span></code>, we first select the variables which we will use in the model.  Note that we keep <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">latitude</span></code> to be able to map the data in a later stage but we will not use the variables in our model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df_new</span> <span class="o">&lt;-</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing_df_new</span> <span class="o">&lt;-</span>
   <span class="n">housing_df</span> <span class="o">%&gt;%</span> 
   <span class="n">select</span><span class="p">(</span> <span class="c1"># select our predictors</span>
     <span class="n">longitude</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> 
@@ -1068,7 +1060,7 @@
 <p>Furthermore, we need to make a new data split since we updated the original data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
 
 <span class="n">data_split</span> <span class="o">&lt;-</span> <span class="n">initial_split</span><span class="p">(</span><span class="n">housing_df_new</span><span class="p">,</span> <span class="c1"># updated data</span>
                            <span class="n">prop</span> <span class="o">=</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">,</span> 
@@ -1121,7 +1113,7 @@
 <p>Note that the package <a class="reference external" href="https://themis.tidymodels.org/index.html"><code class="docutils literal notranslate"><span class="pre">themis</span></code></a> contains extra steps for the <code class="docutils literal notranslate"><span class="pre">recipes</span></code> package for dealing with <strong>imbalanced data</strong>. A classification data set with skewed class proportions is called imbalanced. Classes that make up a large proportion of the data set are called majority classes. Those that make up a smaller proportion are minority classes (see <a class="reference external" href="https://developers.google.com/machine-learning/data-prep/construct/sampling-splitting/imbalanced-data">Google Developers</a> for more details). <code class="docutils literal notranslate"><span class="pre">Themis</span></code> provides various methods for over-sampling (e.g. SMOTE) and under-sampling. However, we don’t have to use this methods since our data is not imbalanced.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">housing_rec</span> <span class="o">&lt;-</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">housing_rec</span> <span class="o">&lt;-</span>
   <span class="n">recipe</span><span class="p">(</span><span class="n">price_category</span> <span class="o">~</span> <span class="o">.</span><span class="p">,</span>
          <span class="n">data</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">)</span> <span class="o">%&gt;%</span>
   <span class="n">update_role</span><span class="p">(</span><span class="n">longitude</span><span class="p">,</span> <span class="n">latitude</span><span class="p">,</span> 
@@ -1145,7 +1137,7 @@
 <p>To view the current set of variables and roles, use the <code class="docutils literal notranslate"><span class="pre">summary()</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span><span class="p">(</span><span class="n">housing_rec</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span><span class="p">(</span><span class="n">housing_rec</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1153,7 +1145,7 @@
 <p>If we would like to check if all of our preprocessing steps from above actually worked, we can  proceed as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prepped_data</span> <span class="o">&lt;-</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prepped_data</span> <span class="o">&lt;-</span> 
   <span class="n">housing_rec</span> <span class="o">%&gt;%</span> <span class="c1"># use the recipe object</span>
   <span class="n">prep</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="c1"># perform the recipe on training data</span>
   <span class="n">juice</span><span class="p">()</span> <span class="c1"># extract only the preprocessed dataframe </span>
@@ -1164,7 +1156,7 @@
 <p>Take a look at the data structure:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">glimpse</span><span class="p">(</span><span class="n">prepped_data</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">glimpse</span><span class="p">(</span><span class="n">prepped_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1172,7 +1164,7 @@
 <p>Visualize the numerical data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prepped_data</span> <span class="o">%&gt;%</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prepped_data</span> <span class="o">%&gt;%</span> 
   <span class="n">select</span><span class="p">(</span><span class="n">price_category</span><span class="p">,</span> 
          <span class="n">median_income</span><span class="p">,</span> 
          <span class="n">rooms_per_household</span><span class="p">,</span> 
@@ -1197,7 +1189,7 @@
 <p>We use k-fold crossvalidation to build a set of 5 validation folds with the function <code class="docutils literal notranslate"><span class="pre">vfold_cv</span></code>. We also use stratified sampling:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
 <span class="n">cv_folds</span> <span class="o">&lt;-</span>
  <span class="n">vfold_cv</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> 
@@ -1225,7 +1217,7 @@
 <h3>Logistic regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_spec</span> <span class="o">&lt;-</span> <span class="c1"># your model specification</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log_spec</span> <span class="o">&lt;-</span> <span class="c1"># your model specification</span>
   <span class="n">logistic_reg</span><span class="p">()</span> <span class="o">%&gt;%</span>  <span class="c1"># model type</span>
   <span class="n">set_engine</span><span class="p">(</span><span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;glm&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>  <span class="c1"># model engine</span>
   <span class="n">set_mode</span><span class="p">(</span><span class="s2">&quot;classification&quot;</span><span class="p">)</span> <span class="c1"># model mode</span>
@@ -1241,7 +1233,7 @@
 <h3>Random forest<a class="headerlink" href="#random-forest" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">ranger</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">ranger</span><span class="p">)</span>
 
 <span class="n">rf_spec</span> <span class="o">&lt;-</span> 
   <span class="n">rand_forest</span><span class="p">()</span> <span class="o">%&gt;%</span> 
@@ -1257,7 +1249,7 @@
 <h3>Boosted tree (XGBoost)<a class="headerlink" href="#boosted-tree-xgboost" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">xgboost</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">xgboost</span><span class="p">)</span>
 
 <span class="n">xgb_spec</span> <span class="o">&lt;-</span> 
   <span class="n">boost_tree</span><span class="p">()</span> <span class="o">%&gt;%</span> 
@@ -1272,7 +1264,7 @@
 <h3>K-nearest neighbor<a class="headerlink" href="#k-nearest-neighbor" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">knn_spec</span> <span class="o">&lt;-</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">knn_spec</span> <span class="o">&lt;-</span> 
   <span class="n">nearest_neighbor</span><span class="p">(</span><span class="n">neighbors</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># we can adjust the number of neighbors </span>
   <span class="n">set_engine</span><span class="p">(</span><span class="s2">&quot;kknn&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
   <span class="n">set_mode</span><span class="p">(</span><span class="s2">&quot;classification&quot;</span><span class="p">)</span> 
@@ -1286,7 +1278,7 @@
 <p>To use the neural network model, you will need to install the following packages: <code class="docutils literal notranslate"><span class="pre">keras</span></code>. You will also need the python keras library installed (see <code class="docutils literal notranslate"><span class="pre">?keras::install_keras()</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">keras</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">keras</span><span class="p">)</span>
 
 <span class="n">nnet_spec</span> <span class="o">&lt;-</span>
   <span class="n">mlp</span><span class="p">()</span> <span class="o">%&gt;%</span>
@@ -1307,7 +1299,7 @@
 <p>Bundle recipe and model with <code class="docutils literal notranslate"><span class="pre">workflows</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_wflow</span> <span class="o">&lt;-</span> <span class="c1"># new workflow object</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log_wflow</span> <span class="o">&lt;-</span> <span class="c1"># new workflow object</span>
  <span class="n">workflow</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="c1"># use workflow function</span>
  <span class="n">add_recipe</span><span class="p">(</span><span class="n">housing_rec</span><span class="p">)</span> <span class="o">%&gt;%</span>   <span class="c1"># use the new recipe</span>
  <span class="n">add_model</span><span class="p">(</span><span class="n">log_spec</span><span class="p">)</span>   <span class="c1"># add your model spec</span>
@@ -1324,7 +1316,7 @@
 <p>Bundle recipe and model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rf_wflow</span> <span class="o">&lt;-</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rf_wflow</span> <span class="o">&lt;-</span>
  <span class="n">workflow</span><span class="p">()</span> <span class="o">%&gt;%</span>
  <span class="n">add_recipe</span><span class="p">(</span><span class="n">housing_rec</span><span class="p">)</span> <span class="o">%&gt;%</span> 
  <span class="n">add_model</span><span class="p">(</span><span class="n">rf_spec</span><span class="p">)</span> 
@@ -1338,7 +1330,7 @@
 <p>Bundle recipe and model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xgb_wflow</span> <span class="o">&lt;-</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xgb_wflow</span> <span class="o">&lt;-</span>
  <span class="n">workflow</span><span class="p">()</span> <span class="o">%&gt;%</span>
  <span class="n">add_recipe</span><span class="p">(</span><span class="n">housing_rec</span><span class="p">)</span> <span class="o">%&gt;%</span> 
  <span class="n">add_model</span><span class="p">(</span><span class="n">xgb_spec</span><span class="p">)</span>
@@ -1352,7 +1344,7 @@
 <p>Bundle recipe and model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">knn_wflow</span> <span class="o">&lt;-</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">knn_wflow</span> <span class="o">&lt;-</span>
  <span class="n">workflow</span><span class="p">()</span> <span class="o">%&gt;%</span>
  <span class="n">add_recipe</span><span class="p">(</span><span class="n">housing_rec</span><span class="p">)</span> <span class="o">%&gt;%</span> 
  <span class="n">add_model</span><span class="p">(</span><span class="n">knn_spec</span><span class="p">)</span>
@@ -1366,7 +1358,7 @@
 <p>Bundle recipe and model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nnet_wflow</span> <span class="o">&lt;-</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nnet_wflow</span> <span class="o">&lt;-</span>
  <span class="n">workflow</span><span class="p">()</span> <span class="o">%&gt;%</span>
  <span class="n">add_recipe</span><span class="p">(</span><span class="n">housing_rec</span><span class="p">)</span> <span class="o">%&gt;%</span> 
  <span class="n">add_model</span><span class="p">(</span><span class="n">nnet_spec</span><span class="p">)</span>
@@ -1388,7 +1380,7 @@
 <p>Note that Cohen’s <em>kappa</em> coefficient (κ) is a similar measure to accuracy, but is normalized by the accuracy that would be expected by chance alone and is very useful when one or more classes have large frequency distributions. The higher the value, the better.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_res</span> <span class="o">&lt;-</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log_res</span> <span class="o">&lt;-</span> 
   <span class="n">log_wflow</span> <span class="o">%&gt;%</span> 
   <span class="n">fit_resamples</span><span class="p">(</span>
     <span class="n">resamples</span> <span class="o">=</span> <span class="n">cv_folds</span><span class="p">,</span> 
@@ -1408,7 +1400,7 @@
 <p>The above described method to obtain <code class="docutils literal notranslate"><span class="pre">log_res</span></code> is fine if we are not interested in model coefficients. However, if we would like to extract the model coeffcients from <code class="docutils literal notranslate"><span class="pre">fit_resamples</span></code>, we need to proceed as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># save model coefficients for a fitted model object from a workflow</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># save model coefficients for a fitted model object from a workflow</span>
 <span class="n">get_model</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
   <span class="n">pull_workflow_fit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">%&gt;%</span> 
     <span class="n">tidy</span><span class="p">()</span>
@@ -1436,7 +1428,7 @@
 <p>Now there is a <code class="docutils literal notranslate"><span class="pre">.extracts</span></code> column with nested tibbles.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>log_res_2$.extracts[[1]]
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>log_res_2$.extracts[[1]]
 </pre></div>
 </div>
 </div>
@@ -1444,7 +1436,7 @@
 <p>To get the results use:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>log_res_2$.extracts[[1]][[1]]
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>log_res_2$.extracts[[1]][[1]]
 </pre></div>
 </div>
 </div>
@@ -1452,7 +1444,7 @@
 <p>All of the results can be flattened and collected using:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>all_coef &lt;- map_dfr(log_res_2$.extracts, ~ .x[[1]][[1]])
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>all_coef &lt;- map_dfr(log_res_2$.extracts, ~ .x[[1]][[1]])
 </pre></div>
 </div>
 </div>
@@ -1460,7 +1452,7 @@
 <p>Show all of the resample coefficients for a single predictor:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span><span class="p">(</span><span class="n">all_coef</span><span class="p">,</span> <span class="n">term</span> <span class="o">==</span> <span class="s2">&quot;median_income&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span><span class="p">(</span><span class="n">all_coef</span><span class="p">,</span> <span class="n">term</span> <span class="o">==</span> <span class="s2">&quot;median_income&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1471,7 +1463,7 @@
 <p>Show average performance over all folds:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_res</span> <span class="o">%&gt;%</span>  <span class="n">collect_metrics</span><span class="p">(</span><span class="n">summarize</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log_res</span> <span class="o">%&gt;%</span>  <span class="n">collect_metrics</span><span class="p">(</span><span class="n">summarize</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1479,7 +1471,7 @@
 <p>Show performance for every single fold:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_res</span> <span class="o">%&gt;%</span>  <span class="n">collect_metrics</span><span class="p">(</span><span class="n">summarize</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log_res</span> <span class="o">%&gt;%</span>  <span class="n">collect_metrics</span><span class="p">(</span><span class="n">summarize</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1490,7 +1482,7 @@
 <p>To obtain the actual model predictions, we use the function <code class="docutils literal notranslate"><span class="pre">collect_predictions</span></code> and save the result as <code class="docutils literal notranslate"><span class="pre">log_pred</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_pred</span> <span class="o">&lt;-</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log_pred</span> <span class="o">&lt;-</span> 
   <span class="n">log_res</span> <span class="o">%&gt;%</span>
   <span class="n">collect_predictions</span><span class="p">()</span>
 </pre></div>
@@ -1503,7 +1495,7 @@
 <p>Now we can use the predictions to create a <em>confusion matrix</em> with <code class="docutils literal notranslate"><span class="pre">conf_mat()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_pred</span> <span class="o">%&gt;%</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log_pred</span> <span class="o">%&gt;%</span>
   <span class="n">conf_mat</span><span class="p">(</span><span class="n">price_category</span><span class="p">,</span> <span class="o">.</span><span class="n">pred_class</span><span class="p">)</span> 
 </pre></div>
 </div>
@@ -1512,7 +1504,7 @@
 <p>Additionally, the confusion matrix can quickly be visualized in different formats using <code class="docutils literal notranslate"><span class="pre">autoplot()</span></code>. Type mosaic:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_pred</span> <span class="o">%&gt;%</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log_pred</span> <span class="o">%&gt;%</span>
   <span class="n">conf_mat</span><span class="p">(</span><span class="n">price_category</span><span class="p">,</span> <span class="o">.</span><span class="n">pred_class</span><span class="p">)</span> <span class="o">%&gt;%</span> 
   <span class="n">autoplot</span><span class="p">(</span><span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;mosaic&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1522,7 +1514,7 @@
 <p>Or type heatmap:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_pred</span> <span class="o">%&gt;%</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log_pred</span> <span class="o">%&gt;%</span>
   <span class="n">conf_mat</span><span class="p">(</span><span class="n">price_category</span><span class="p">,</span> <span class="o">.</span><span class="n">pred_class</span><span class="p">)</span> <span class="o">%&gt;%</span> 
   <span class="n">autoplot</span><span class="p">(</span><span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;heatmap&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1535,7 +1527,7 @@
 <p>We can also make an ROC curve for our 5 folds. Since the category we are predicting is the first level in the <code class="docutils literal notranslate"><span class="pre">price_category</span></code> factor (“above”), we provide <code class="docutils literal notranslate"><span class="pre">roc_curve()</span></code> with the relevant class probability <code class="docutils literal notranslate"><span class="pre">.pred_above</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">log_pred</span> <span class="o">%&gt;%</span>
   <span class="n">group_by</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># id contains our folds</span>
   <span class="n">roc_curve</span><span class="p">(</span><span class="n">price_category</span><span class="p">,</span> <span class="o">.</span><span class="n">pred_above</span><span class="p">)</span> <span class="o">%&gt;%</span> 
@@ -1551,7 +1543,7 @@
 <p>Plot predicted probability distributions for our two classes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log_res</span> <span class="o">%&gt;%</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log_res</span> <span class="o">%&gt;%</span>
   <span class="n">collect_predictions</span><span class="p">()</span> <span class="o">%&gt;%</span> 
   <span class="n">ggplot</span><span class="p">()</span> <span class="o">+</span>
   <span class="n">geom_density</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="o">.</span><span class="n">pred_above</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="n">price_category</span><span class="p">),</span> 
@@ -1567,7 +1559,7 @@
 <p>We don’t repeat all of the steps shown in logistic regression and just focus on the performance metrics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rf_res</span> <span class="o">&lt;-</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">rf_res</span> <span class="o">&lt;-</span>
   <span class="n">rf_wflow</span> <span class="o">%&gt;%</span> 
   <span class="n">fit_resamples</span><span class="p">(</span>
     <span class="n">resamples</span> <span class="o">=</span> <span class="n">cv_folds</span><span class="p">,</span> 
@@ -1589,7 +1581,7 @@
 <p>We don’t repeat all of the steps shown in logistic regression and just focus on the performance metrics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">xgb_res</span> <span class="o">&lt;-</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">xgb_res</span> <span class="o">&lt;-</span> 
   <span class="n">xgb_wflow</span> <span class="o">%&gt;%</span> 
   <span class="n">fit_resamples</span><span class="p">(</span>
     <span class="n">resamples</span> <span class="o">=</span> <span class="n">cv_folds</span><span class="p">,</span> 
@@ -1611,7 +1603,7 @@
 <p>We don’t repeat all of the steps shown in logistic regression and just focus on the performance metrics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">knn_res</span> <span class="o">&lt;-</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">knn_res</span> <span class="o">&lt;-</span> 
   <span class="n">knn_wflow</span> <span class="o">%&gt;%</span> 
   <span class="n">fit_resamples</span><span class="p">(</span>
     <span class="n">resamples</span> <span class="o">=</span> <span class="n">cv_folds</span><span class="p">,</span> 
@@ -1633,7 +1625,7 @@
 <p>We don’t repeat all of the steps shown in logistic regression and just focus on the performance metrics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nnet_res</span> <span class="o">&lt;-</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nnet_res</span> <span class="o">&lt;-</span> 
   <span class="n">nnet_wflow</span> <span class="o">%&gt;%</span> 
   <span class="n">fit_resamples</span><span class="p">(</span>
     <span class="n">resamples</span> <span class="o">=</span> <span class="n">cv_folds</span><span class="p">,</span> 
@@ -1655,7 +1647,7 @@
 <p>Extract metrics from our models to compare them:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">log_metrics</span> <span class="o">&lt;-</span> 
   <span class="n">log_res</span> <span class="o">%&gt;%</span> 
   <span class="n">collect_metrics</span><span class="p">(</span><span class="n">summarise</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span> <span class="o">%&gt;%</span>
@@ -1728,7 +1720,7 @@
 <p>Note that the model results are all quite similar. In our example we choose the F1-Score as performance measure to select the best model. Let’s find the maximum mean F1-Score:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_comp</span> <span class="o">%&gt;%</span> <span class="n">slice_max</span><span class="p">(</span><span class="n">mean_f_meas</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_comp</span> <span class="o">%&gt;%</span> <span class="n">slice_max</span><span class="p">(</span><span class="n">mean_f_meas</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1741,7 +1733,7 @@
 <p>Tidymodels provides the function <a class="reference external" href="https://tune.tidymodels.org/reference/last_fit.html"><code class="docutils literal notranslate"><span class="pre">last_fit()</span></code></a> which fits a model to the whole <em>training data</em> and evaluates it on the <em>test set</em>. We just need to provide the workflow object of the best model as well as the <strong>data split</strong> object (not the training data).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">last_fit_rf</span> <span class="o">&lt;-</span> <span class="n">last_fit</span><span class="p">(</span><span class="n">rf_wflow</span><span class="p">,</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">last_fit_rf</span> <span class="o">&lt;-</span> <span class="n">last_fit</span><span class="p">(</span><span class="n">rf_wflow</span><span class="p">,</span> 
                         <span class="n">split</span> <span class="o">=</span> <span class="n">data_split</span><span class="p">,</span>
                         <span class="n">metrics</span> <span class="o">=</span> <span class="n">metric_set</span><span class="p">(</span>
                           <span class="n">recall</span><span class="p">,</span> <span class="n">precision</span><span class="p">,</span> <span class="n">f_meas</span><span class="p">,</span> 
@@ -1755,7 +1747,7 @@
 <p>Show performance metrics</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">last_fit_rf</span> <span class="o">%&gt;%</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">last_fit_rf</span> <span class="o">%&gt;%</span> 
   <span class="n">collect_metrics</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1765,7 +1757,7 @@
 <p>To learn more about the model we can access the variable importance scores via the <code class="docutils literal notranslate"><span class="pre">.workflow</span></code> column. We first need to pluck out the first element in the workflow column, then pull out the fit from the workflow object. Finally, the <code class="docutils literal notranslate"><span class="pre">vip</span></code> package helps us visualize the variable importance scores for the top features. Note that we can’t create this type of plot for every model engine.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">vip</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">library</span><span class="p">(</span><span class="n">vip</span><span class="p">)</span>
 
 <span class="n">last_fit_rf</span> <span class="o">%&gt;%</span> 
   <span class="n">pluck</span><span class="p">(</span><span class="s2">&quot;.workflow&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%&gt;%</span>   
@@ -1779,7 +1771,7 @@
 <p>Take a look at the confusion matrix:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">last_fit_rf</span> <span class="o">%&gt;%</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">last_fit_rf</span> <span class="o">%&gt;%</span>
   <span class="n">collect_predictions</span><span class="p">()</span> <span class="o">%&gt;%</span> 
   <span class="n">conf_mat</span><span class="p">(</span><span class="n">price_category</span><span class="p">,</span> <span class="o">.</span><span class="n">pred_class</span><span class="p">)</span> <span class="o">%&gt;%</span> 
   <span class="n">autoplot</span><span class="p">(</span><span class="nb">type</span> <span class="o">=</span> <span class="s2">&quot;heatmap&quot;</span><span class="p">)</span>
@@ -1790,7 +1782,7 @@
 <p>Let’s create the ROC curve. Again, since the event we are predicting is the first level in the <code class="docutils literal notranslate"><span class="pre">price_category</span></code> factor (“above”), we provide <code class="docutils literal notranslate"><span class="pre">roc_curve()</span></code> with the relevant class probability <code class="docutils literal notranslate"><span class="pre">.pred_above</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">last_fit_rf</span> <span class="o">%&gt;%</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">last_fit_rf</span> <span class="o">%&gt;%</span> 
   <span class="n">collect_predictions</span><span class="p">()</span> <span class="o">%&gt;%</span> 
   <span class="n">roc_curve</span><span class="p">(</span><span class="n">price_category</span><span class="p">,</span> <span class="o">.</span><span class="n">pred_above</span><span class="p">)</span> <span class="o">%&gt;%</span> 
   <span class="n">autoplot</span><span class="p">()</span>
@@ -1846,7 +1838,7 @@
         <a class="right-next" href="04-references.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">References {-}</p>
+                <p class="prevnext-title">References</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
