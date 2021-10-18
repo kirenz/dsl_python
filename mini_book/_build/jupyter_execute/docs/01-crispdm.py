@@ -9,19 +9,18 @@
 # In our data science projects, we follow the data science lifecycle process proposed in the "cross industry standard process for data mining (CRISP-DM)" from {cite:t}`Wirth2000`
 # 
 
-# 
-# 
-# 
-# ![title](../_static/lecture_specific/01_crisp_dm/CRISP_DM.png)
+# ```{note}
+# To learn more about this framework, review this [presentation about the CRISP-DM](https://docs.google.com/presentation/d/1Y_6d-yv0Wq9WQvWkYS64KYkcSoswewm-7t2jfSz3aT4/edit?usp=sharing). 
+# ```
 
 # ```{image} ../_static/lecture_specific/01_crisp_dm/CRISP_DM.png
 # :alt: crispdm
 # :class: bg-primary mb-1
-# :width: 200px
+# :width: 500px
 # :align: center
 # ```
 
-# To learn more about this framework, review this [presentation about the CRISP-DM](https://docs.google.com/presentation/d/1Y_6d-yv0Wq9WQvWkYS64KYkcSoswewm-7t2jfSz3aT4/edit?usp=sharing). 
+# 
 # 
 # Next, we show the most crucial steps of the framework. 
 # 
